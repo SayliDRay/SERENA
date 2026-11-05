@@ -1,25 +1,37 @@
 PYTHON ?= python
 ENV ?= xiao_jury_demo
+PROJECT_ROOT := $(dir $(lastword $(MAKEFILE_LIST)))
+MANAGE = $(PYTHON) "$(PROJECT_ROOT)manage.py"
 
 .PHONY: help setup setup-dev run test build check scan doctor clean
 help:
-	@echo "SERENA bracelet: make run, test, build, check, doctor, clean"
-	@echo "Without make: python manage.py COMMAND"
+	@echo "SERENA bracelet - available commands"
+	@echo "  make run        Start the 3D bracelet and calling service"
+	@echo "  make setup      Install runtime dependencies"
+	@echo "  make setup-dev  Install firmware build dependencies"
+	@echo "  make test       Run software tests without phone calls"
+	@echo "  make build      Build the jury ESP32 firmware"
+	@echo "  make check      Scan sources and run tests"
+	@echo "  make scan       Check publishable files for credentials"
+	@echo "  make doctor     Show available local tools"
+	@echo "  make clean      Remove generated caches"
+	@echo "Build profile: make build ENV=xiao_esp32c3"
+	@echo "Without Make: python manage.py --help"
 setup:
-	$(PYTHON) manage.py setup
+	$(MANAGE) setup
 setup-dev:
-	$(PYTHON) manage.py setup-dev
+	$(MANAGE) setup-dev
 run:
-	$(PYTHON) manage.py run
+	$(MANAGE) run
 test:
-	$(PYTHON) manage.py test
+	$(MANAGE) test
 build:
-	$(PYTHON) manage.py build --environment $(ENV)
+	$(MANAGE) build --environment $(ENV)
 check:
-	$(PYTHON) manage.py check
+	$(MANAGE) check
 scan:
-	$(PYTHON) manage.py scan
+	$(MANAGE) scan
 doctor:
-	$(PYTHON) manage.py doctor
+	$(MANAGE) doctor
 clean:
-	$(PYTHON) manage.py clean
+	$(MANAGE) clean

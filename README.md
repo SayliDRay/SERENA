@@ -64,6 +64,10 @@ For another platform, supply the environment variables listed in [.env.example](
 
 ## Build and test
 
+Run `make help` to list commands, from either the repository root or `nora-embedded`.
+If Make is unavailable on Windows, use `python manage.py --help` from the root,
+or `python ../manage.py --help` from `nora-embedded`.
+
 | Task | Any platform | With Make installed |
 | --- | --- | --- |
 | Install runtime | `python manage.py setup` | `make setup` |
