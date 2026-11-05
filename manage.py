@@ -46,7 +46,7 @@ def tests(require_js=False):
 def build(environment):
     portable = ROOT / '.tools/python-native/python.exe'
     if os.name == 'nt' and portable.exists():
-        run('powershell.exe', '-NoProfile', '-File', 'nora-embedded/scripts/build-local.ps1', '-Environment', environment)
+        run('powershell.exe', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', 'nora-embedded/scripts/build-local.ps1', '-Environment', environment)
     else:
         run(sys.executable, '-m', 'platformio', 'run', '-d', 'nora-embedded', '-e', environment)
 
