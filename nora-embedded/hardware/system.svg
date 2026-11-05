@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="1120" viewBox="0 0 1540 1120" role="img" aria-labelledby="title desc">
+<title id="title">NORA+ complete subsystem reference for France</title>
+<desc id="desc">Draft interface schematic linking the XIAO ESP32C3 controller, cellular development board, audio headset, SIM and antennas, motion sensor, SOS, motor driver and rechargeable power architecture. Hardware is untested; LTE and charging are not simulated.</desc>
+<defs>
+ <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#527080"/></marker>
+ <style>
+  text{font-family:Segoe UI,Arial,sans-serif;fill:#18364a} .title{font-size:32px;font-weight:700}.sub{font-size:17px;fill:#526a79}.label{font-size:20px;font-weight:700}.body{font-size:16px}.small{font-size:14px}.box{fill:white;stroke:#c6d5dc;stroke-width:2}.core{fill:#e5f6f2;stroke:#12977e;stroke-width:2}.draft{fill:#fff6e5;stroke:#c89635;stroke-width:2;stroke-dasharray:8 5}.wire{fill:none;stroke:#527080;stroke-width:2.5;marker-end:url(#arrow)}.power{stroke:#c17a23}.tag{font-size:13px;font-weight:700;letter-spacing:1px;fill:#956116}
+ </style>
+</defs>
+<rect width="1540" height="1120" fill="#f1f5f7"/>
+<text x="50" y="58" class="title">NORA+ / THE COMPLETE SYSTEM</text>
+<text x="50" y="89" class="sub">France • operator pending • XIAO ESP32C3 + external cellular bench hardware</text>
+<rect x="50" y="111" width="1440" height="43" rx="9" fill="#ffebc6"/>
+<text x="70" y="139" class="body">DRAFT INTERFACE SCHEMATIC — hardware untested; LTE, eSIM, audio and charging do not run in Wokwi.</text>
+
+<rect x="50" y="205" width="270" height="152" rx="14" class="draft"/>
+<text x="72" y="232" class="tag">POWER / CELL NOT SELECTED</text>
+<text x="72" y="265" class="label">Protected 1S battery</text>
+<text x="72" y="294" class="body">Li-ion / Li-polymer + NTC</text>
+<text x="72" y="321" class="small">Capacity, fit and burst rating pending</text>
+
+<rect x="390" y="205" width="300" height="152" rx="14" class="draft"/>
+<text x="412" y="232" class="tag">CHARGER REFERENCE</text>
+<text x="412" y="265" class="label">BQ24074 + power path</text>
+<text x="412" y="294" class="body">USB input protection / limits</text>
+<text x="412" y="321" class="small">SYS can be 4.4 V; not a 3.3 V rail</text>
+<path d="M320 280H390" class="wire" marker-start="url(#arrow)"/>
+<text x="423" y="190" class="small">USB 5 V charging input ↓</text>
+
+<rect x="785" y="205" width="325" height="152" rx="14" class="draft"/>
+<text x="807" y="232" class="tag">REGULATORS / DESIGN PENDING</text>
+<text x="807" y="265" class="label">Isolated power distribution</text>
+<text x="807" y="294" class="body">5 V modem • controller • motor</text>
+<text x="807" y="321" class="small">Size for transmit bursts and low battery</text>
+<path d="M690 280H785" class="wire power"/><text x="712" y="267" class="small">SYS</text>
+
+<rect x="50" y="460" width="270" height="130" rx="14" class="core"/>
+<text x="72" y="496" class="label">MPU6050</text>
+<text x="72" y="526" class="body">3.3 V • I2C 0x68</text>
+<text x="72" y="554" class="small">Experimental impact + inactivity</text>
+<path d="M320 523H475" class="wire" marker-start="url(#arrow)"/>
+<text x="340" y="506" class="small">D4 SDA / D5 SCL</text>
+
+<rect x="475" y="435" width="335" height="180" rx="16" class="core"/>
+<text x="499" y="469" class="tag" style="fill:#087661">CONTROLLER / DEVELOPMENT BOARD</text>
+<text x="499" y="505" class="label">XIAO ESP32C3</text>
+<text x="499" y="535" class="body">SOS / timers / call state machine</text>
+<text x="499" y="565" class="body">USB console • 3.3 V logic</text>
+<text x="499" y="592" class="small">No smartphone dependency</text>
+
+<rect x="1015" y="435" width="475" height="180" rx="16" class="draft"/>
+<text x="1039" y="469" class="tag">PHYSICAL BENCH / NOT SIMULATED</text>
+<text x="1039" y="505" class="label">SIM7600E-H 4G HAT</text>
+<text x="1039" y="535" class="body">SIM + LTE voice modem + onboard audio codec</text>
+<text x="1039" y="565" class="body">5 V power • HAT VCCIO jumper set to 3.3 V</text>
+<text x="1039" y="592" class="small">56.21 × 65.15 mm — external bench stand-in</text>
+<path d="M810 523H1015" class="wire" marker-start="url(#arrow)"/>
+<text x="837" y="492" class="small">D6 TX → HAT RXD</text>
+<text x="837" y="556" class="small">D7 RX ← HAT TXD</text>
+<path d="M947 357V390H1250V435" class="wire power"/><text x="1140" y="382" class="small">regulated 5 V</text>
+<path d="M840 357V399H645V435" class="wire power"/><text x="590" y="388" class="small">source-isolated controller rail</text>
+
+<rect x="1180" y="205" width="310" height="152" rx="14" class="draft"/>
+<text x="1202" y="232" class="tag">NETWORK QUALIFICATION</text>
+<text x="1202" y="265" class="label">French voice subscription</text>
+<text x="1202" y="294" class="body">Removable SIM for bench</text>
+<text x="1202" y="321" class="small">Operator / firmware / eSIM pending</text>
+<path d="M1335 357V435" class="wire"/>
+
+<rect x="50" y="680" width="270" height="130" rx="14" class="core"/>
+<text x="72" y="717" class="label">One physical SOS button</text>
+<text x="72" y="747" class="body">D1 / GPIO3 → switch → GND</text>
+<text x="72" y="777" class="small">3 s hold • 5 s fresh-press cancel</text>
+<path d="M320 740H400V580H475" class="wire"/>
+
+<rect x="475" y="680" width="335" height="157" rx="14" class="box"/>
+<text x="499" y="717" class="label">Status + local warning</text>
+<text x="499" y="747" class="body">D10: green LED / 330 Ω</text>
+<text x="499" y="777" class="body">D3: red LED + motor MOSFET</text>
+<text x="499" y="807" class="body">D2: separate piezo MOSFET</text>
+<path d="M642 615V680" class="wire"/>
+
+<rect x="1015" y="680" width="475" height="157" rx="14" class="draft"/>
+<text x="1039" y="717" class="label">Voice audio + antennas</text>
+<text x="1039" y="747" class="body">Compatible headset: microphone ↔ codec ↔ earpiece</text>
+<text x="1039" y="777" class="body">LTE MAIN / AUX antennas follow HAT reference</text>
+<text x="1039" y="807" class="small">Production mic / amplifier / speaker / RF design pending</text>
+<path d="M1250 615V680" class="wire" marker-start="url(#arrow)"/>
+
+<rect x="50" y="895" width="1440" height="169" rx="14" fill="#17384b"/>
+<text x="76" y="931" class="label" style="fill:white">Motor driver: GPIO is a signal, never the motor supply</text>
+<text x="76" y="965" class="body" style="fill:#d7e7ef">D3 → 100 Ω → Q1 gate; 100 kΩ gate-to-source. Q1 source → GND; drain → motor −; rated rail → motor +.</text>
+<text x="76" y="996" class="body" style="fill:#d7e7ef">Flyback diode: cathode → motor +; anode → Q1 drain. Separate Q2 gate path drives the passive warning piezo.</text>
+<text x="76" y="1031" class="body" style="fill:#ffdc96">Solid green blocks: existing control behavior. Dashed amber blocks: physical reference / qualification required.</text>
+</svg>

@@ -1,0 +1,27 @@
+Reference,Subsystem,Candidate or specification,Quantity,Status
+U1,Controller,Seeed XIAO ESP32C3,1,Existing simulation board; bench stand-in
+U2,Cellular,Waveshare SIM7600E-H 4G HAT exact voice-capable firmware,1,Bench reference only; French operator not supplied
+J_SIM,SIM,Operator-compatible voice-enabled removable SIM,1,User/operator required; not an eSIM implementation
+ANT1,RF,LTE main antenna matching module bands and connector,1,Check purchased HAT revision and operator bands
+ANT2,RF,LTE diversity antenna matching HAT AUX requirements,1,Follow purchased HAT reference
+J_AUDIO,Audio,HAT-compatible headset including microphone and earpiece,1,Bench reference; jack compatibility to verify
+MIC1,Production audio,Microphone and bias/filter network for final modem or codec,1,Pending; not direct ESP32 GPIO
+SPK1,Production audio,Speaker plus rated audio amplifier if required,1,Pending acoustic and electrical selection
+U3,Motion,MPU6050 3.3V-compatible breakout,1,Experimental heuristic; I2C 0x68
+SW1,Input,Momentary SOS switch,1,GPIO3 internal pull-up; debounce in firmware
+LED1,Feedback,Green LED and 330 ohm series resistor,1,GPIO10 heartbeat/connected
+LED2,Feedback,Red LED and 330 ohm series resistor,1,GPIO5 shared with motor driver gate
+Q1,Motor driver,AO3400A logic-level MOSFET candidate,1,Verify motor current and package; source GND
+M1,Vibration,ERM motor with documented rated rail and pulse current,1,Pending voltage dimensions and current selection
+D1,Motor protection,Flyback diode rated for selected ERM motor,1,Pending selection; cathode motor positive
+Q2,Warning,AO3400A low-side switch candidate for passive piezo,1,Driven at 1.8kHz by GPIO4
+BZ1,Warning,Passive piezo rated for selected rail,1,Bench audible cancellation; no voice audio
+RG,Driver passives,100 ohm gate series and 100 kohm gate-source pull-down,2 pairs,Starting values; transient/EMI validation pending
+R_I2C,I2C,4.7 kohm SDA/SCL pull-ups to 3.3V,2,Account for pull-ups already fitted to breakouts
+BAT1,Power,Protected one-cell Li-ion/Li-polymer pack with NTC,1,Capacity dimensions charge/discharge rating not selected
+U_CHG,Charging,BQ24074 charger and power-path reference,1,Candidate; passives/input limits/thermal design pending
+U_5V,Power,Regulated 5V converter sized for measured modem bursts,1,Not selected; switch current is not output current
+U_MOTOR,Power,Regulated rail within motor rated voltage,1,Pending actuator selection; TPS63020 family to evaluate
+U_ISO,Power,Power-source selection and reverse-current protection,1,Not selected; prevent USB/battery supply backfeed
+J_USB,Power,USB charging input with ESD and current negotiation,1,Pending physical connector and input-source design
+PROD_SIM,Production eSIM,Modem/eUICC/operator provisioning combination,1,Pending; no generic eSIM is claimed

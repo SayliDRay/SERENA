@@ -1,0 +1,27 @@
+name: Experimental sensor impact then inactivity and cancellation
+version: 1
+author: NORA+
+steps:
+  - wait-serial: 'MPU6050 ready'
+  - delay: 300ms
+  - set-control:
+      part-id: imu
+      name: accelZ
+      value: 3
+  - delay: 100ms
+  - set-control:
+      part-id: imu
+      name: accelZ
+      value: 1
+  - wait-serial: 'SENSOR suspected fall'
+  - delay: 100ms
+  - set-control:
+      part-id: sos
+      name: pressed
+      value: 1
+  - wait-serial: 'cancelled locally'
+  - set-control:
+      part-id: sos
+      name: pressed
+      value: 0
+  - wait-serial: 'release SOS to rearm'

@@ -1,0 +1,28 @@
+name: Manual SOS accepted ringing answered and remote hangup
+version: 1
+author: NORA+
+steps:
+  - wait-serial: 'MPU6050 ready'
+  - delay: 300ms
+  - set-control:
+      part-id: sos
+      name: pressed
+      value: 1
+  - delay: 100ms
+  - set-control:
+      part-id: sos
+      name: pressed
+      value: 0
+  - wait-serial: 'short SOS: call now'
+  - wait-serial: 'request ACCEPTED'
+  - write-serial: "RING\n"
+  - wait-serial: 'REMOTE RINGING'
+  - write-serial: "ANSWER\n"
+  - wait-serial: 'remote ANSWERED'
+  - expect-pin:
+      part-id: esp
+      name: D10
+      value: 1
+  - write-serial: "HANGUP\n"
+  - wait-serial: 'remote hangup'
+  - wait-serial: 'release SOS to rearm'

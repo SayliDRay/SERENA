@@ -1,0 +1,2 @@
+# Runtime: RFC2217 connection to Wokwi. The web server uses the Python standard library.
+pyserial==3.5

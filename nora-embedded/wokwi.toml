@@ -1,0 +1,6 @@
+[wokwi]
+version = 1
+firmware = '.pio/build/xiao_jury_demo/firmware.bin'
+elf = '.pio/build/xiao_jury_demo/firmware.elf'
+
+rfc2217ServerPort = 4000

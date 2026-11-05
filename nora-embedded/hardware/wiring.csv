@@ -1,0 +1,39 @@
+Profile,From,To,Voltage or function
+bench,XIAO D1 GPIO3,SOS switch contact1,3.3V internal pull-up
+bench,SOS switch contact2,GND,Return
+bench,XIAO D4 GPIO6,MPU6050 SDA,I2C 100kHz
+bench,XIAO D5 GPIO7,MPU6050 SCL,I2C 100kHz
+bench,SDA and SCL,3V3 through separate 4.7k resistors,Pull-ups
+bench,XIAO 3V3,MPU6050 VCC,3.3V
+bench,MPU6050 AD0,GND,Address 0x68
+bench,XIAO D6 GPIO21 TX,HAT level-shifted RXD,3.3V UART
+bench,HAT level-shifted TXD,XIAO D7 GPIO20 RX,3.3V UART
+bench,HAT VCCIO jumper,3.3V position,Check exact revision
+bench,Regulated bench 5V,HAT specified 5V input,Supply current to be measured
+bench,XIAO GND,HAT and driver GND,Common reference
+bench,XIAO USB,PC USB,Programming/console and sole controller supply initially
+bench,XIAO D10 GPIO10,330ohm then green LED A,Status
+bench,Green LED C,GND,Return
+bench,XIAO D3 GPIO5,330ohm then red LED A,Shared warning
+bench,Red LED C,GND,Return
+bench,XIAO D3 GPIO5,100ohm then Q1 gate,Motor signal only
+bench,Q1 gate,Q1 source through 100kohm,Off at reset
+bench,Q1 source,GND,Low-side switch
+bench,Q1 drain,ERM motor negative,Not a GPIO load
+bench,Rated motor rail,ERM motor positive,Pending motor rating
+bench,Flyback diode cathode,ERM motor positive,Inductive protection
+bench,Flyback diode anode,Q1 drain,Inductive protection
+bench,XIAO D2 GPIO4,100ohm then Q2 gate,Piezo PWM
+bench,Q2 gate,Q2 source through 100kohm,Off at reset
+bench,Q2 source,GND,Low-side switch
+bench,Q2 drain,Passive piezo negative,Local warning
+bench,Rated piezo supply,Passive piezo positive,Pending acoustic load selection
+bench,HAT audio connector,Compatible headset mic and earpiece,Codec audio not GPIO
+bench,HAT MAIN and AUX,Appropriate LTE antennas,RF follow HAT manual
+bench,HAT SIM slot,Operator-compatible voice SIM,No eSIM provisioning
+power-reference,USB charging 5V,Input protection and charger IN,Not an assembled circuit
+power-reference,Protected 1S pack and NTC,Charger BAT and TS network,Cell-specific settings pending
+power-reference,Charger SYS,Rated 5V converter input,SYS may be 4.4V; not direct MCU power
+power-reference,Rated 5V converter output,HAT 5V,Transmit load validation pending
+power-reference,Controller supply branch,Source-isolated XIAO power,Do not parallel USB supplies
+power-reference,Motor regulator output,ERM motor positive,Use selected motor rated voltage

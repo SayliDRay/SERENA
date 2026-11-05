@@ -1,0 +1,10 @@
+{
+  "name": "serena-bracelet",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "python manage.py run",
+    "test": "node --test nora-design/tests/*.test.mjs"
+  },
+  "engines": { "node": ">=22" }
+}

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f1eb">
+  <meta name="description" content="Explorez le concept SÉRÉNA en 3D : capot tactile, finition minérale, fiche d’urgence et bracelet ajustable.">
+  <title>SÉRÉNA — Atelier du bracelet</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/addons/"}}</script>
+</head>
+<body>
+  <a class="skip-link" href="#explorer">Aller à l’exploration 3D</a>
+  <header class="site-header">
+    <a class="wordmark" href="#" aria-label="SÉRÉNA, accueil">SÉRÉNA</a>
+    <span class="header-divider" aria-hidden="true"></span>
+    <span class="atelier-label">ATELIER DE DESIGN</span>
+    <nav aria-label="Navigation principale">
+      <a class="active" href="#explorer">Le bracelet</a>
+      <a href="#hardware">Le matériel</a>
+      <a href="#reference">L’inspiration <span aria-hidden="true">↗</span></a>
+    </nav>
+    <span class="concept-label"><span class="small-dot"></span> CONCEPT 01</span>
+  </header>
+
+  <main>
+    <section class="design-studio" id="explorer" aria-label="Atelier interactif SÉRÉNA">
+      <div class="stage">
+        <div class="stage-heading">
+          <p class="eyebrow">LE BRACELET SÉRÉNA</p>
+          <h1>Un geste simple.<br>Une présence<br><em>rassurante.</em></h1>
+          <p class="intro">Des formes douces, une matière sensible.<br>Un objet pensé pour se faire oublier.</p>
+        </div>
+        <div id="scene" role="img" aria-label="Modèle 3D du bracelet SÉRÉNA, orientable à la souris ou au toucher"></div>
+        <div id="loading" class="loading" role="status"><span class="loading-orbit"></span> Façonnage du bracelet…</div>
+        <div id="scene-error" class="scene-error" hidden>
+          <strong>La vue 3D ne s’est pas chargée.</strong>
+          <p id="error-message">Ouvrez cette page depuis le serveur local dans un navigateur compatible WebGL.</p>
+          <button id="retry">Réessayer</button>
+        </div>
+        <div id="hotspots" class="hotspots" aria-label="Repères du bracelet">
+          <button class="hotspot" data-feature="touch" aria-label="Découvrir le grand bouton tactile"><span>01</span><b>Le geste tactile</b></button>
+          <button class="hotspot" data-feature="lid" aria-label="Découvrir le capot relevable"><span>02</span><b>Le capot relevable</b></button>
+          <button class="hotspot" data-feature="light" aria-label="Découvrir la recharge USB-C"><span>03</span><b>Le port USB-C</b></button>
+          <button class="hotspot" data-feature="audio" aria-label="Découvrir la grille audio"><span>04</span><b>L’audio discret</b></button>
+        </div>
+        <span class="view-index"><span id="view-number">01</span> <span class="index-line"></span> <span id="view-name">PERSPECTIVE</span></span>
+        <div class="stage-tools">
+          <button class="icon-button" id="autorotate" aria-label="Activer la rotation automatique" aria-pressed="false" title="Rotation automatique"><svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2 6M20 5v6h-6"/></svg></button>
+          <button class="icon-button selected" id="toggle-hotspots" aria-label="Masquer les repères" aria-pressed="true" title="Afficher les repères"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg></button>
+          <button class="icon-button" id="export" aria-label="Enregistrer la vue en PNG" title="Enregistrer la vue"><svg viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M4 16v5h16v-5"/></svg></button>
+        </div>
+        <div class="viewer-bottom">
+          <div class="camera-views" role="group" aria-label="Choisir un angle de vue">
+            <button class="active" data-view="perspective" aria-pressed="true">Perspective</button>
+            <button data-view="front" aria-pressed="false">De face</button>
+            <button data-view="profile" aria-pressed="false">Profil</button>
+            <button data-view="back" aria-pressed="false">Dessous</button>
+          </div>
+          <p class="gesture-hint"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M7 13V4a1 1 0 0 1 2 0v5-1a1 1 0 0 1 2 0v1a1 1 0 0 1 2 0v1a1 1 0 0 1 2 0v3c0 3-2 4-5 4-2 0-3-1-4-2l-3-4a1 1 0 0 1 2-1l2 2"/></svg> Glisser pour tourner <span>·</span> Défiler pour zoomer</p>
+        </div>
+        <div id="toast" class="toast" role="status" aria-live="polite"></div>
+      </div>
+
+      <aside class="inspector" aria-label="Personnaliser le concept">
+        <div class="inspector-heading"><span class="eyebrow">VOTRE EXPLORATION</span><span class="live-badge">3D EN DIRECT</span></div>
+        <h2>Le confort<br>dans chaque détail.</h2>
+        <p class="panel-intro">Approchez, faites tourner, ouvrez.<br>Prenez le temps de découvrir SÉRÉNA.</p>
+
+        <section class="control-section" aria-labelledby="finish-title">
+          <div class="control-title"><h3 id="finish-title">01 <span>La matière</span></h3><span id="finish-name">Pierre naturelle</span></div>
+          <div class="swatches" role="group" aria-label="Finition du bracelet">
+            <button class="swatch active" data-finish="stone" aria-label="Pierre naturelle" aria-pressed="true"><span style="--swatch:#c7bca7"></span><small>Pierre</small></button>
+            <button class="swatch" data-finish="sage" aria-label="Sauge minérale" aria-pressed="false"><span style="--swatch:#9fa99a"></span><small>Sauge</small></button>
+            <button class="swatch" data-finish="clay" aria-label="Argile douce" aria-pressed="false"><span style="--swatch:#bb9a87"></span><small>Argile</small></button>
+          </div>
+          <p class="microcopy">Aspect minéral moucheté · toucher mat imaginé</p>
+        </section>
+
+        <section class="control-section" aria-labelledby="lid-title">
+          <div class="control-title"><h3 id="lid-title">02 <span>Le capot</span></h3><button class="switch" id="lid-toggle" role="switch" aria-checked="false" aria-label="Ouvrir le capot"><span></span></button></div>
+          <div class="lid-copy"><strong id="lid-state">Un geste à portée de main.</strong><p id="lid-description">Le grand capot tactile protège la zone d’identification.</p></div>
+          <div class="range-row"><label for="lid-angle">Ouverture</label><output id="angle-value" for="lid-angle">0°</output></div>
+          <input id="lid-angle" type="range" min="0" max="115" value="0" aria-label="Angle d’ouverture du capot">
+        </section>
+
+        <section class="control-section" aria-labelledby="light-title" hidden>
+          <div class="control-title"><h3 id="light-title">03 <span>Le port USB-C</span></h3><span class="amber-dot" aria-hidden="true"></span></div>
+          <div class="segmented" role="group" aria-label="Aspect de la lumière">
+            <button data-light="off" aria-pressed="false">Éteint</button>
+            <button class="active" data-light="steady" aria-pressed="true">Ambre</button>
+            <button data-light="breathe" aria-pressed="false">Pulsé</button>
+          </div>
+        </section>
+
+        <button class="touch-test" id="touch-test" aria-label="Appui bref pour appeler ; maintenir deux secondes pour raccrocher">
+          <span class="touch-symbol"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="track" cx="20" cy="20" r="16"/><circle id="hold-progress" cx="20" cy="20" r="16"/><circle class="center-dot" cx="20" cy="20" r="3"/></svg></span>
+          <span><strong id="touch-label">Appeler mon contact</strong><small id="touch-hint">Appui bref : appeler · appui long 2 s : raccrocher</small></span>
+          <span class="touch-arrow" aria-hidden="true">↗</span>
+        </button>
+        <p class="demo-caption" id="demo-caption">Appui bref : appeler. Appui long 2 s : annuler ou raccrocher.</p>
+        <button class="construction-button" id="construction" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 17l9 5 9-5"/></svg><span>Voir les composants et le matériel</span><span aria-hidden="true">+</span></button>
+        <div class="concept-note"><span class="small-dot"></span> Boîtier compact et sangle resserrée, raccordée à la coque. Étude extérieure, intégration à valider.</div>
+      </aside>
+    </section>
+
+    <section class="hardware-resources" id="hardware">
+      <p class="eyebrow">LE MATÉRIEL RESTE ACCESSIBLE</p>
+      <h2>Le bracelet, et ce qu’il doit contenir.</h2>
+      <p>Ouvrez « Voir les composants et le matériel » pour retrouver la vue éclatée 3D. Les composants sont présentés séparément : leur intégration dans ce profil fin reste à vérifier. La batterie est un volume illustratif ; le modem compact est un candidat. Le SIM7600 HAT est une carte de banc externe.</p>
+      <nav aria-label="Ressources matérielles">
+        <a href="resources/system.svg" target="_blank" rel="noopener">Ouvrir le schéma ↗</a>
+        <a href="resources/README.md" target="_blank" rel="noopener">Guide matériel ↗</a>
+        <a href="resources/bom.csv" download>Liste des composants ↓</a>
+        <a href="resources/wiring.csv" download>Câblage ↓</a>
+      </nav>
+      <p class="microcopy">Documents sources conservés dans nora-embedded/hardware. Vue de référence technique.</p>
+    </section>
+    <section class="detail-section" id="details" aria-labelledby="detail-heading">
+      <div class="section-heading"><div><p class="eyebrow">L’ESSENTIEL, SANS LE SUPERFLU</p><h2 id="detail-heading">Pensé dans les détails.</h2></div><p>Des repères familiers.<br>Une présence discrète au quotidien.</p></div>
+      <div class="detail-grid">
+        <button class="detail-card" data-feature="touch"><div class="detail-drawing"><svg viewBox="0 0 160 115" aria-hidden="true"><ellipse cx="80" cy="66" rx="46" ry="32"/><ellipse cx="80" cy="59" rx="43" ry="31"/><circle cx="80" cy="43" r="3"/><path d="M80 17v-8m-6 4 6 5 6-5M34 67c5 24 83 34 92-1"/></svg></div><span class="detail-number">01 / LE GESTE</span><h3>Une grande surface tactile.</h3><p>Un bouton généreux, un repère en relief.<br>Une intention facile à reconnaître.</p><span class="detail-link">Approcher le détail <span>↗</span></span></button>
+        <button class="detail-card" data-feature="lid"><div class="detail-drawing"><svg viewBox="0 0 160 115" aria-hidden="true"><ellipse cx="80" cy="84" rx="43" ry="18"/><ellipse cx="80" cy="37" rx="35" ry="29" transform="rotate(-18 80 37)"/><path d="m57 58 6 11m9-11 5 10M54 80h17v12H54zm34-1h17v12H88zM76 78v17m-8-11h23"/></svg></div><span class="detail-number">02 / L’ACCÈS</span><h3>L’information, à l’abri.</h3><p>Le capot se relève et dévoile<br>la zone d’identification intérieure.</p><span class="detail-link">Soulever le capot <span>↗</span></span></button>
+        <button class="detail-card" data-feature="light"><div class="detail-drawing"><svg viewBox="0 0 160 115" aria-hidden="true"><ellipse cx="80" cy="55" rx="43" ry="31"/><path class="amber-stroke" d="M36 59c4 37 84 38 89 0"/><path d="m38 84-4 7m20-2-2 8m28-5v8m28-12 3 8m15-15 5 7"/></svg></div><span class="detail-number">03 / LA RECHARGE</span><h3>Une recharge protégée.</h3><p>Un port USB-C latéral,<br>sous son cache attaché.</p><span class="detail-link">Observer le port USB-C <span>↗</span></span></button>
+        <button class="detail-card" data-feature="audio"><div class="detail-drawing"><svg viewBox="0 0 160 115" aria-hidden="true"><path d="M22 47q58-27 116 0l-5 31q-51 20-106 0Z"/><rect x="65" y="51" width="53" height="20" rx="9"/><path stroke-dasharray="1 6" stroke-linecap="round" stroke-width="3" d="M74 58h36m-36 6h36"/><circle cx="48" cy="61" r="2"/></svg></div><span class="detail-number">04 / LA DISCRÉTION</span><h3>Chaque ouverture a sa place.</h3><p>Une grille latérale intégrée à la forme,<br>pour le microphone et le haut-parleur.</p><span class="detail-link">Découvrir le profil <span>↗</span></span></button>
+      </div>
+    </section>
+
+    <section class="reference-section" id="reference" aria-labelledby="reference-heading">
+      <div class="reference-visual"><button id="reference-open" aria-label="Agrandir l’image de référence"><img src="assets/reference.png" alt="Image de référence fournie : bracelet beige moucheté avec capot gris, port USB-C, identification sous le capot et grille audio latérale." loading="lazy"><span>Agrandir la référence <span>↗</span></span></button></div>
+      <div class="reference-copy"><p class="eyebrow">DU CROQUIS À LA FORME</p><h2 id="reference-heading">Une matière douce.<br>Un caractère <em>singulier.</em></h2><p>Le concept reprend les courbes enveloppantes et le contraste pierre–ardoise de votre image. La sangle ajustable, la charnière et le relief tactile donnent une lecture précise de l’objet.</p><div class="material-sample" aria-hidden="true"></div><p class="reference-caption">Référence visuelle fournie · aspect de matière recyclée envisagé.<br>Ergonomie, matériaux, dimensions et faisabilité à valider.</p></div>
+    </section>
+  </main>
+
+  <footer><a class="wordmark" href="#">SÉRÉNA</a><span>Un objet simple. Une intention essentielle.</span><p>Étude de design 3D · Démonstration d’appel · Identification graphique de démonstration</p></footer>
+  <dialog id="reference-dialog" aria-label="Image de référence du bracelet"><button id="reference-close" class="dialog-close" aria-label="Fermer l’image">Fermer <span>×</span></button><img src="assets/reference.png" alt="Concept de design original du bracelet SÉRÉNA, fourni par l’utilisateur."></dialog>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
